@@ -3,3 +3,5 @@
 
 ### 技术栈
 vue3 + Pinia + vue-router + axios + element plus + vite2
+
+### ts
