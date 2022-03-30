@@ -1,6 +1,6 @@
 import axios from 'axios'
 const instance = axios.create({
-    baseURL: 'https://some-domain.com/api/',
+    baseURL: '/api',
     timeout: 10000,
     headers: {
         post: {
@@ -16,7 +16,7 @@ export function requestPost(url, params, deploy) {
     return request('post', url, params, deploy)
 }
 
-function request(method, url, params = {}, deploy) {
+function request(method, url, params = {}, deploy={}) {
     return new Promise((reslove, reject) => {
         const opction = {method, url}
         const methodObj = {post: 'data', get: 'params'}

@@ -22,5 +22,15 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src')
     }
+  },
+  // 反向代理
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })

@@ -1,7 +1,7 @@
 import {requestGet} from '@/http'
 
-export function getindex () {
-    return requestGet('api/index')
+export function getlogin (params) {
+    return requestGet('api/login', params)
 }
 
 

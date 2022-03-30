@@ -1,7 +1,11 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import { getlogin } from '@/api'
 import HelloWorld from '@/components/HelloWorld.vue'
+getlogin({aa:123456}).then(res => {
+  console.log(res)
+}).catch(err => {
+  console.log(err)
+})
 </script>
 
 <template>
