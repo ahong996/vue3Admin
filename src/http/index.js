@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ElLoading } from 'element-plus'
 const instance = axios.create({
     baseURL: '/api',
     timeout: 10000,
@@ -20,7 +21,7 @@ function request(method, url, params = {}, deploy={}) {
     return new Promise((reslove, reject) => {
         const opction = {method, url}
         const methodObj = {post: 'data', get: 'params'}
-
+        opction.deploy = deploy
         // 添加公共参数
         params.test = 1
         
@@ -44,6 +45,8 @@ function request(method, url, params = {}, deploy={}) {
     })
 }
 
+let loading = null
+let idx = 0
 
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
@@ -53,6 +56,15 @@ instance.interceptors.request.use(function (config) {
     // if (config.method === 'get') {
     //     config.params.a = '1' // undefined
     // }
+    if (config.deploy.loading !== false) {
+        idx += 1
+        loading = ElLoading.service({
+            lock: true,
+            text: 'Loading',
+            background: 'rgba(255, 255, 255, .9)',
+        })
+    }
+    console.log(idx)
     // 在发送请求之前做些什么
     return config;
 }, function (error) {
@@ -62,6 +74,10 @@ instance.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
+    if (response.config.deploy.loading !== false) {
+        idx -= 1
+    }
+    if (idx === 0) loading && loading.close()
     // 对响应数据做点什么
     return response;
 }, function (error) {

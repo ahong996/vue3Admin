@@ -1,7 +1,7 @@
 import {requestGet} from '@/http'
 
-export function getlogin (params) {
-    return requestGet('api/login', params)
+export function getlogin (params, deploy) {
+    return requestGet('api/login', params, deploy)
 }
 
 
