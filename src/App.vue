@@ -3,11 +3,17 @@
   <el-button @click="loadajax">Default</el-button>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
+  <el-button @click="setBtn">set设置</el-button>
+  <el-button @click="getBtn">get获取</el-button>
+  <el-button @click="lengthBtn">length长度</el-button>
+  <el-button @click="removeBtn">remove移除</el-button>
+  <el-button @click="clearBtn">clear清空</el-button>
 </template>
 
 <script setup>
 import { getlogin } from '@/api'
 import HelloWorld from '@/components/HelloWorld.vue'
+import {MyLocalStorage} from '@/localStorage'
 function loadajax() {
   loadajax0()
   loadajax1()
@@ -28,6 +34,28 @@ function loadajax1() {
   }).catch(err => {
     console.log(err)
   })
+}
+const myLocalStorage = new MyLocalStorage()
+const myLocalStorage1 = new MyLocalStorage(':')
+function setBtn() {
+  myLocalStorage.setItem('a',1)
+  myLocalStorage.setItem('a',222)
+  myLocalStorage.setItem('b',{b:2})
+  myLocalStorage1.setItem('b',{b:2}, 10)
+  myLocalStorage1.setItem('a',{a:2})
+}
+function getBtn() {
+  console.log(myLocalStorage1.getItem('b'))
+  console.log(myLocalStorage1.getItem('a'))
+}
+function lengthBtn() {
+  console.log(myLocalStorage.length())
+}
+function removeBtn() {
+  myLocalStorage.removeItem('a')
+}
+function clearBtn() {
+  myLocalStorage.clear()
 }
 </script>
 

@@ -26,6 +26,7 @@ function request(method, url, params = {}, deploy={}) {
         params.test = 1
         
         opction[methodObj[method]] = params
+        
         if (deploy.headers && Object.keys(deploy.headers).length > 0) {
             opction.headers = deploy.headers
         }
