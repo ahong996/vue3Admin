@@ -25,6 +25,7 @@ MyLocalStorage.prototype.getItem = function(key) {
 MyLocalStorage.prototype.removeItem = function(key) {
     localStorage.removeItem( this.name + key)
 }
+
 MyLocalStorage.prototype.clear = function() {
     Object.keys(localStorage).forEach(item => {
         if(item.startsWith(this.name)) {
