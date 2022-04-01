@@ -23,6 +23,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.5.0",
     "prettier": "^2.6.1",
+    "stylus": "^0.57.0",
+    "stylus-loader": "^6.2.0",
     "unplugin-auto-import": "^0.6.6",
     "unplugin-vue-components": "^0.18.5",
     "vite": "^2.8.0"
