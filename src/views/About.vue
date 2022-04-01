@@ -1,5 +1,5 @@
 <template>
-  <p>{{store.state.count}}</p>
+  <p class="aa fontSize">{{store.state.count}}</p>
   <p>{{aa}}</p>
   <button @click="add">+</button>
 </template>
@@ -14,3 +14,10 @@ function add() {
 }
 const aa = computed(() => store.state.count);
 </script>
+
+<style lang="stylus">
+  @import '../assets/stylus/base.styl'
+  .aa.fontSize {
+    color: yellow;
+  }
+</style>
