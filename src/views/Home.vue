@@ -11,6 +11,9 @@
   <router-link to="/about">关于</router-link>
   <router-link :to="{name: 'About'}">关于</router-link>
   <el-button @click="to">关于</el-button>
+  <br>
+  <hr>
+  <p>{{store.state.count}}</p>
 </template>
 
 <script setup>
@@ -18,6 +21,8 @@ import { getlogin } from '@/api'
 import HelloWorld from '@/components/HelloWorld.vue'
 import {MyLocalStorage} from '@/localStorage'
 import {useRouter} from 'vue-router'
+import { useStore } from 'vuex'
+const store = useStore()
 const router = useRouter()
 function loadajax() {
   loadajax0()
